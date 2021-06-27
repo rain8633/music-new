@@ -11,15 +11,18 @@
 
 该项目是我修改的一位大佬的音乐播放网站。后端整合了redis+shiro+RabbitMQ,实现注册时发送邮箱激活的功能
 
-之前发送邮件时，一旦重启服务器，邮件就会重新启动定时任务，发送指定次数（还没找到啥原因）之前我的github地址:https://github.com/rain8633/music.git
-
-修改之后后端采用模块化,把邮件服务的模块单独抽离出来启动
+后端采用模块化,把邮件服务的模块单独抽离出来启动
 
 <br/>
 
 ## 项目说明
 
 本音乐网站的开发主要利用 VUE 框架开发前台和后台，后端接口用 Spring Boot + MyBatis 来实现，数据库使用的是 MySQL。实现思路可以看[这里](https://yin-hongwei.github.io/2019/03/04/music/#more)。
+###  原项目地址
+
+```
+https://github.com/Yin-Hongwei/music-website.git
+```
 
 <br/>
 
@@ -174,9 +177,5 @@ npm run dev // 启动后台管理项目
 
 <br/>
 
-###  原项目地址
 
-```
-https://github.com/Yin-Hongwei/music-website.git
-```
 
