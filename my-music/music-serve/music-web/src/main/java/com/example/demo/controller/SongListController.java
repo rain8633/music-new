@@ -28,7 +28,7 @@ public class SongListController {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //            registry.addResourceHandler("/img/songListPic/**").addResourceLocations("file:/Users/hongweiyin/Documents/github-workspace/music-website/music-server/img/songListPic/");
-            registry.addResourceHandler("/img/songListPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\my-music\\music-serve\\music-web\\img\\songListPic\\");
+            registry.addResourceHandler("/img/songListPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\Music\\my-music\\music-serve\\music-web\\img\\songListPic\\");
         }
     }
 

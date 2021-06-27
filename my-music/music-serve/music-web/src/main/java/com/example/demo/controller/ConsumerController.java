@@ -66,10 +66,11 @@ public class ConsumerController {
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //            registry.addResourceHandler("/avatorImages/**").addResourceLocations("file:/Users/hongweiyin/Documents/github-workspace/music-website/music-server/avatorImages/");
             registry.addResourceHandler("/avatorImages/**").addResourceLocations("file:I:\\源码\\springboot+vue\\music-website-master\\music-website-master\\music-server\\avatorImages\\");
+            registry.addResourceHandler("/img/**").addResourceLocations("file:I:\\源码\\springboot+vue\\music-website-master\\music-website-master\\music-server\\img\\");
         }
     }
 
-//    添加用户
+    //    添加用户
     @ResponseBody
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
     public Object addUser(HttpServletRequest req){
@@ -87,8 +88,8 @@ public class ConsumerController {
         String salt = MD5Util.md5Encrypt32Lower(email);
         // 使用SimpleHash类对原始密码进行加密
         String Pw = new SimpleHash("MD5", password,salt, 1024).toHex();
-         Consumer consumer1=consumerService.findByUsername(username);
-         Consumer consumer2=consumerService.findByEmail(email);
+        Consumer consumer1=consumerService.findByUsername(username);
+        Consumer consumer2=consumerService.findByEmail(email);
         if(consumer1!=null){
             jsonObject.put("code", 0);
             jsonObject.put("msg", "用户名已存在");
@@ -97,7 +98,7 @@ public class ConsumerController {
             jsonObject.put("code", 0);
             jsonObject.put("msg", "邮箱已被注册!");
             return jsonObject;
-         } else {
+        } else {
             Consumer consumer = new Consumer();
             //生成激活码
             String validateCode = MD5Util.md5Encrypt32Upper(email);
@@ -189,7 +190,7 @@ public class ConsumerController {
 
         String jsonStr=JSONObject.toJSONString(baseResponse);
 
-      JSONObject jsonObject=JSONObject.parseObject(jsonStr);
+        JSONObject jsonObject=JSONObject.parseObject(jsonStr);
         model.addAttribute("url", "http://localhost:8080");
 
         if (jsonObject.containsKey("code")) {
@@ -213,9 +214,9 @@ public class ConsumerController {
         String code=req.getParameter("code");
         String verify_code = (String) req.getSession().getAttribute("verify_code");
         if(code == null || verify_code == null || "".equals(code) || !verify_code.toLowerCase().equals(code.toLowerCase())){
-             jsonObject.put("msg","验证码错误");
-             jsonObject.put("code",3);
-             return jsonObject;
+            jsonObject.put("msg","验证码错误");
+            jsonObject.put("code",3);
+            return jsonObject;
         }else {
 //        System.out.println(username+"  "+password);
             //登录验证
@@ -233,12 +234,12 @@ public class ConsumerController {
                 jsonObject.put("code", 0);
                 jsonObject.put("msg","邮箱未激活!");
                 return jsonObject;
-           }
-                jsonObject.put("code", 1);
-                jsonObject.put("msg", "登录成功");
-                jsonObject.put("userMsg", consumerService.loginStatus(username));
-                session.setAttribute("username", username);
-                return jsonObject;
+            }
+            jsonObject.put("code", 1);
+            jsonObject.put("msg", "登录成功");
+            jsonObject.put("userMsg", consumerService.loginStatus(username));
+            session.setAttribute("username", username);
+            return jsonObject;
         }
     }
 
@@ -253,14 +254,14 @@ public class ConsumerController {
         VerificationCode.output(image,resp.getOutputStream());
     }
 
-//    返回所有用户
+    //    返回所有用户
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     @ResponseBody
     public Object allUser(){
         return consumerService.allUser();
     }
 
-//    返回指定ID的用户
+    //    返回指定ID的用户
     @RequestMapping(value = "/user/detail", method = RequestMethod.GET)
     @ResponseBody
     public Object userOfId(HttpServletRequest req){
@@ -268,7 +269,7 @@ public class ConsumerController {
         return consumerService.userOfId(Integer.parseInt(id));
     }
 
-//    删除用户
+    //    删除用户
     @RequestMapping(value = "/user/delete", method = RequestMethod.GET)
     @ResponseBody
     public Object deleteUser(HttpServletRequest req){
@@ -276,7 +277,7 @@ public class ConsumerController {
         return consumerService.deleteUser(Integer.parseInt(id));
     }
 
-//    更新用户信息
+    //    更新用户信息
     @ResponseBody
     @RequestMapping(value = "/user/update", method = RequestMethod.POST)
     public Object updateUserMsg(HttpServletRequest req){
@@ -330,7 +331,7 @@ public class ConsumerController {
         }
     }
 
-//    更新用户头像
+    //    更新用户头像
     @ResponseBody
     @RequestMapping(value = "/user/avatar/update", method = RequestMethod.POST)
     public Object updateUserPic(@RequestParam("file") MultipartFile avatorFile, @RequestParam("id")int id){
@@ -342,7 +343,9 @@ public class ConsumerController {
             return jsonObject;
         }
         String fileName = System.currentTimeMillis()+avatorFile.getOriginalFilename();
-        String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "avatorImages" ;
+//        String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "avatorImages" ;//这是在项目目录下找avatorImages文件
+        String filePath = "I:\\源码\\springboot+vue\\music-website-master\\music-website-master\\music-server\\avatorImages" ;//这里存储的路径要和上面开放的地址保持一致
+
         File file1 = new File(filePath);
         if (!file1.exists()){
             file1.mkdir();

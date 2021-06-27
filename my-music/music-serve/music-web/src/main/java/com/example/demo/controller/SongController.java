@@ -42,10 +42,10 @@ public class SongController {
     public class MyPicConfig implements WebMvcConfigurer {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/img/songPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\my-music\\music-serve\\music-web\\img\\songPic\\");
+            registry.addResourceHandler("/img/songPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\Music\\my-music\\music-serve\\music-web\\img\\songPic\\");
 //            registry.addResourceHandler("/img/songPic/**").addResourceLocations("file:/Users/hongweiyin/Documents/github-workspace/music-website/music-server/img/songPic/");
 //            registry.addResourceHandler("/song/**").addResourceLocations("file:/Users/hongweiyin/Documents/github-workspace/music-website/music-server/song/");
-            registry.addResourceHandler("/song/**").addResourceLocations("file:I:\\源码\\springboot+vue\\my-music\\music-serve\\music-web\\song\\");
+            registry.addResourceHandler("/song/**").addResourceLocations("file:I:\\源码\\springboot+vue\\Music\\my-music\\music-serve\\music-web\\song\\");
         }
     }
 

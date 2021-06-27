@@ -30,7 +30,7 @@ public class SingerController {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //            registry.addResourceHandler("/img/singerPic/**").addResourceLocations("file:/Users/hongweiyin/Documents/github-workspace/music-website/music-server/img/singerPic/");
-            registry.addResourceHandler("/img/singerPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\my-music\\music-serve\\music-web\\img\\singerPic\\");
+            registry.addResourceHandler("/img/singerPic/**").addResourceLocations("file:I:\\源码\\springboot+vue\\Music\\my-music\\music-serve\\music-web\\img\\singerPic\\");
         }
     }
 
